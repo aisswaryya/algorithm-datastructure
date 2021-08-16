@@ -1,0 +1,15 @@
+var reverseParentheses = function(s) {
+    const stack = [];
+    stack.push('');
+    for(c of s){
+        if( c == '('){
+            stack.push('');
+        }else if(c == ')'){
+            let top = stack.pop();
+            stack[stack.length-1]+= top.split('').reverse().join('');
+        }else{
+            stack[stack.length-1]+= c;
+        }
+    }
+    return stack.pop();
+};
